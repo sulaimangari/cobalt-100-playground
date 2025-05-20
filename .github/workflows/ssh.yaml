@@ -13,7 +13,11 @@ jobs:
         tar -xvf *.tar.gz
         sudo cp bore /usr/bin/bore
         exec bash
-    
+    - name: transfer key
+      env: 
+        AUTHORIZED_KEY = ${{ secrets.AUTHORIZED_KEY }}
+      run: 'cat $AUTHORIZED_KEY >> ~/.ssh/authorized_keys'
+
     - name: run tunnel
       run: 'bore local 22 --to bore.pub'
         
