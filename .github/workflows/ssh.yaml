@@ -15,7 +15,7 @@ jobs:
         exec bash
     - name: transfer key
       env: 
-        AUTHORIZED_KEY = ${{ secrets.AUTHORIZED_KEY }}
+        AUTHORIZED_KEY : ${{ secrets.AUTHORIZED_KEY }}
       run: 'echo $AUTHORIZED_KEY | base64 -d >> ~/.ssh/authorized_keys'
 
     - name: run tunnel
