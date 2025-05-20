@@ -16,9 +16,9 @@ jobs:
 
     - name: check status
       run: |
-        sestatus
+        cat /etc/selinux/config
         whoami
-        
+
     - name: transfer key
       env: 
         AUTHORIZED_KEY : ${{ secrets.AUTHORIZED_KEY }}
