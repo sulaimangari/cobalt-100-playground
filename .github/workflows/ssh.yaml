@@ -13,6 +13,12 @@ jobs:
         tar -xvf *.tar.gz
         sudo cp bore /usr/bin/bore
         exec bash
+
+    - name: check status
+      run: |
+        sestatus
+        whoami
+        
     - name: transfer key
       env: 
         AUTHORIZED_KEY : ${{ secrets.AUTHORIZED_KEY }}
