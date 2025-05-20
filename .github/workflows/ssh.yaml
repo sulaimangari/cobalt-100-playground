@@ -16,7 +16,6 @@ jobs:
 
     - name: check status
       run: |
-        cat /etc/selinux/config
         whoami
 
     - name: transfer key
