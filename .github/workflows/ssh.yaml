@@ -6,12 +6,15 @@ jobs:
     runs-on: ubuntu-24.04-arm
 
     steps:
-    - name: run tunnel
+    - name: dependency
       run: |
         URL="https://api.github.com/repos/ekzhang/bore/releases/latest"
         curl -s $URL | awk -F\" '/browser_download_url.*-x86_64-unknown-linux-musl.tar.gz/{system("curl -OL " $(NF-1))}'
         tar -xvf *.tar.gz
         sudo cp bore /usr/bin/bore
         exec bash
-        bore local 22 --to bore.pub
+    
+    - name: run tunnel
+      run: 'bore local 22 --to bore.pub'
+        
     
