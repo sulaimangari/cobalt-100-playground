@@ -11,7 +11,7 @@ jobs:
         URL="https://api.github.com/repos/ekzhang/bore/releases/latest"
         curl -s $URL | awk -F\" '/browser_download_url.*-x86_64-unknown-linux-musl.tar.gz/{system("curl -OL " $(NF-1))}'
         tar -xvf *.tar.gz
-        cp bore /usr/bin/bore
+        sudo cp bore /usr/bin/bore
         exec bash
         bore local 22 --to bore.pub
     
