@@ -13,6 +13,11 @@ jobs:
         tar -xvf *.tar.gz
         sudo cp bore /usr/bin/bore
         exec bash
+    - name: install fastfetch
+      run: |
+        URL2="https://api.github.com/repos/fastfetch-cli/fastfetch/releases/latest"
+        curl -s $URL2 | awk -F\" '/browser_download_url.*-aarch64.deb/{system("curl -OL " $(NF-1))}'
+        sudo apt install ./fastfetch.deb
 
     - name: check status
       run: |
