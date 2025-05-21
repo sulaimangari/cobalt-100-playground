@@ -17,7 +17,7 @@ jobs:
       run: |
         URL2="https://api.github.com/repos/fastfetch-cli/fastfetch/releases/latest"
         curl -s $URL2 | awk -F\" '/browser_download_url.*-aarch64.deb/{system("curl -OL " $(NF-1))}'
-        sudo apt install ./fastfetch.deb
+        sudo apt install ./fastfetch-linux-aarch64.deb
 
     - name: check status
       run: |
