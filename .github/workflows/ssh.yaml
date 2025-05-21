@@ -28,6 +28,8 @@ jobs:
         chmod 600 ~/.ssh/authorized_keys
 
     - name: run tunnel
-      run: 'bore local 22 --to bore.pub'
+      env:
+        SERVER_IP : ${{ secrets.SERVER_IP }}
+      run: 'bore local 22 --to $SERVER_IP'
         
     
