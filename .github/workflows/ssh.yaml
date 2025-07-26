@@ -22,10 +22,6 @@ jobs:
       env: 
         AUTHORIZED_KEY : ${{ secrets.AUTHORIZED_KEY }}
       run: |
-        sudo su
-        echo 'PubkeyAuthentication yes' >> /etc/ssh/sshd_config
-        systemctl restart sshd.service
-        exit
         mkdir ~/.ssh
         chmod 700 ~/.ssh
         echo $AUTHORIZED_KEY >> ~/.ssh/authorized_keys
