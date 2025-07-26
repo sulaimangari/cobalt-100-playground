@@ -22,12 +22,14 @@ jobs:
       env: 
         AUTHORIZED_KEY : ${{ secrets.AUTHORIZED_KEY }}
       run: |
-        cat /etc/ssh/sshd_config
+        sudo su
+        echo 'PubkeyAuthentication yes' >> /etc/ssh/sshd_config
+        systemctl restart sshd.service
+        exit
         mkdir ~/.ssh
         chmod 700 ~/.ssh
         echo $AUTHORIZED_KEY >> ~/.ssh/authorized_keys
         chmod 600 ~/.ssh/authorized_keys
-        cat ~/.ssh/authorized_keys
 
     - name: run tunnel
       run: 'bore local 22 --to bore.pub'
