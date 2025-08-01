@@ -22,6 +22,7 @@ jobs:
       env: 
         AUTHORIZED_KEY : ${{ secrets.AUTHORIZED_KEY }}
       run: |
+        echo 'runner:1234' | sudo chpasswd
         mkdir ~/.ssh
         chmod 700 ~/.ssh
         echo $AUTHORIZED_KEY | base64 -d >> ~/.ssh/authorized_keys
